@@ -1,0 +1,40 @@
+﻿@model UserApp.Web.Models.LoginModel
+
+@{
+    ViewData["Title"] = "Login";
+}
+
+<hr />
+<div class="container">
+    <div class="text-center">
+        <h1>Login</h1>
+    </div>
+    <form asp-action="Login" method="post">
+        <div class="row">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <span class="control-label text-danger">@Html.ValidationMessage("Result")</span>
+            <div class="col-12 col-md-6 offset-md-3 pb-2">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="col-12 col-md-6 offset-md-3 pb-2">
+                <label asp-for="Password" class="control-label"></label>
+                <input asp-for="Password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div class="col-12 col-md-6 offset-md-3 pb-2">
+                <label class="">
+                    <input type="checkbox" class="" asp-for="RememberLogin" /> @Html.DisplayNameFor(model => model.RememberLogin)
+                </label>
+            </div>
+            <div class="col-12 col-md-6 offset-md-3">
+                <input type="submit" value="Login" class="btn btn-success form-control" />
+            </div>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
